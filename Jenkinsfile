@@ -20,18 +20,7 @@ pipeline {
                         sh 'docker build -t suhail114/new-demo-project:java-mv-app-2.0 .'
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh 'docker push suhail114/new-demo-project:java-mv-app-2.0'
-                }
-            }
-        }
-        stage("test") {
-            when {
-                expression {
-                    params.executeTests
-                }
-            }
-            steps {
-                script {
-                    gv.testApp()
+                    }    
                 }
             }
         }
@@ -43,5 +32,4 @@ pipeline {
             }
         }
     }   
-}
 }
